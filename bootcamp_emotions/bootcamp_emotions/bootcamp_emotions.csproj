@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props" Condition="Exists('..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F5B805C-5D21-43C5-9487-A5542F57D02E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Bootcamp.CompVis.Emotions</RootNamespace>
+    <AssemblyName>emotions</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accord, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.8.2-alpha\lib\net46\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Controls.Imaging, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Controls.Imaging.3.8.2-alpha\lib\net46\Accord.Controls.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Imaging, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Imaging.3.8.2-alpha\lib\net46\Accord.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.MachineLearning, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.MachineLearning.3.8.2-alpha\lib\net46\Accord.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.2-alpha\lib\net46\Accord.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math.Core, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.2-alpha\lib\net46\Accord.Math.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.3.8.2-alpha\lib\net46\Accord.Statistics.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Video, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Video.3.8.2-alpha\lib\net46\Accord.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Video.DirectShow, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Video.DirectShow.3.8.2-alpha\lib\net46\Accord.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Vision, Version=3.8.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Vision.3.8.2-alpha\lib\net46\Accord.Vision.dll</HintPath>
+    </Reference>
+    <Reference Include="CppInerop, Version=1.0.6612.31409, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\CppInerop.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net46\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Blob, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net46\OpenCvSharp.Blob.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.Extensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net46\OpenCvSharp.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.UserInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\lib\net46\OpenCvSharp.UserInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="AU_predictors\svm_combined\AU_10_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_10_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_12_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_12_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_14_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_14_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_15_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_15_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_17_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_17_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_1_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_1_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_20_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_20_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_23_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_23_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_25_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_25_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_26_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_26_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_28_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_28_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_2_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_2_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_45_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_45_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_4_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_4_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_5_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_5_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_6_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_6_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_7_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_7_static.dat" />
+    <None Include="AU_predictors\svm_combined\AU_9_dynamic.dat" />
+    <None Include="AU_predictors\svm_combined\AU_9_static.dat" />
+    <None Include="AU_predictors\svr_combined\AU_10_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_12_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_14_static_intensity.dat" />
+    <None Include="AU_predictors\svr_combined\AU_15_dynamic_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_15_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_17_dynamic_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_17_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_1_dynamic_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_1_static_intensity.dat" />
+    <None Include="AU_predictors\svr_combined\AU_20_dynamic_intensity.dat" />
+    <None Include="AU_predictors\svr_combined\AU_20_static_intensity.dat" />
+    <None Include="AU_predictors\svr_combined\AU_23_dynamic_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_23_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_25_dynamic_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_25_static_intensity.dat" />
+    <None Include="AU_predictors\svr_combined\AU_26_dynamic_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_26_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_2_dynamic_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_2_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_45_dynamic_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_45_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_4_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_5_dynamic_intensity.dat" />
+    <None Include="AU_predictors\svr_combined\AU_5_static_intensity.dat" />
+    <None Include="AU_predictors\svr_combined\AU_6_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_7_static_intensity_comb.dat" />
+    <None Include="AU_predictors\svr_combined\AU_9_dynamic_intensity.dat" />
+    <None Include="AU_predictors\svr_combined\AU_9_static_intensity.dat" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AU_predictors\AU_all_best.txt" />
+    <Content Include="AU_predictors\AU_all_static.txt" />
+    <Content Include="AU_predictors\In-the-wild_aligned_PDM_68.txt" />
+    <Content Include="AU_predictors\main_dynamic_svms.txt" />
+    <Content Include="AU_predictors\main_static_svms.txt" />
+    <Content Include="AU_predictors\tris_68_full.txt" />
+    <Content Include="CppInerop.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\Ekmanfaces2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libgcc_s_seh-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libgfortran-3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libopenblas.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libquadmath-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="model\clm_general.txt" />
+    <Content Include="model\clm_wild.txt" />
+    <Content Include="model\clnf_general.txt" />
+    <Content Include="model\clnf_wild.txt" />
+    <Content Include="model\detection_validation\validator_cnn.txt" />
+    <Content Include="model\detection_validation\validator_general_68.txt" />
+    <Content Include="model\haarAlign.txt" />
+    <Content Include="model\main_clm_general.txt" />
+    <Content Include="model\main_clm_wild.txt" />
+    <Content Include="model\main_clnf_demos.txt" />
+    <Content Include="model\main_clnf_general.txt" />
+    <Content Include="model\main_clnf_wild.txt" />
+    <Content Include="model\model_eye\clnf_left_synth.txt" />
+    <Content Include="model\model_eye\clnf_right_synth.txt" />
+    <Content Include="model\model_eye\main_clnf_synth_left.txt" />
+    <Content Include="model\model_eye\main_clnf_synth_right.txt" />
+    <Content Include="model\model_eye\patch_experts\ccnf_patches_1.00_synth_lid_.txt" />
+    <Content Include="model\model_eye\patch_experts\ccnf_patches_1.50_synth_lid_.txt" />
+    <Content Include="model\model_eye\patch_experts\left_ccnf_patches_1.00_synth_lid_.txt" />
+    <Content Include="model\model_eye\patch_experts\left_ccnf_patches_1.50_synth_lid_.txt" />
+    <Content Include="model\model_eye\pdms\pdm_28_eye_3D_closed.txt" />
+    <Content Include="model\model_eye\pdms\pdm_28_l_eye_3D_closed.txt" />
+    <Content Include="model\model_inner\clnf_inner.txt" />
+    <Content Include="model\model_inner\main_clnf_inner.txt" />
+    <Content Include="model\model_inner\patch_experts\ccnf_patches_1.00_inner.txt" />
+    <Content Include="model\model_inner\pdms\pdm_51_inner.txt" />
+    <Content Include="model\patch_experts\ccnf_patches_0.25_general.txt" />
+    <Content Include="model\patch_experts\ccnf_patches_0.25_wild.txt" />
+    <Content Include="model\patch_experts\ccnf_patches_0.35_general.txt" />
+    <Content Include="model\patch_experts\ccnf_patches_0.35_wild.txt" />
+    <Content Include="model\patch_experts\ccnf_patches_0.5_general.txt" />
+    <Content Include="model\patch_experts\ccnf_patches_0.5_wild.txt" />
+    <Content Include="model\patch_experts\ccnf_patches_1_wild.txt" />
+    <Content Include="model\patch_experts\svr_patches_0.25_general.txt" />
+    <Content Include="model\patch_experts\svr_patches_0.25_wild.txt" />
+    <Content Include="model\patch_experts\svr_patches_0.35_general.txt" />
+    <Content Include="model\patch_experts\svr_patches_0.35_wild.txt" />
+    <Content Include="model\patch_experts\svr_patches_0.5_general.txt" />
+    <Content Include="model\patch_experts\svr_patches_0.5_wild.txt" />
+    <Content Include="model\pdms\In-the-wild_aligned_PDM_68.txt" />
+    <Content Include="model\pdms\Multi-PIE_aligned_PDM_68.txt" />
+    <Content Include="model\tris_68.txt" />
+    <Content Include="model\tris_68_full.txt" />
+    <Content Include="opencv_world340.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tbb.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Accord.3.8.2-alpha\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.2-alpha\build\Accord.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Accord.3.8.2-alpha\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.2-alpha\build\Accord.targets'))" />
+    <Error Condition="!Exists('..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp3-AnyCPU.3.3.1.20171117\build\OpenCvSharp3-AnyCPU.props'))" />
+  </Target>
+</Project>
