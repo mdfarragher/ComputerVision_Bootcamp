@@ -170,10 +170,10 @@ namespace Bootcamp.CompVis.Pose
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="image"></param>
-        private void videoPlayer_NewFrame(object sender, ref System.Drawing.Bitmap image)
+        private void videoPlayer_NewFrameReceived(object sender, Accord.Video.NewFrameEventArgs eventArgs)
         {
             // convert image to dlib format
-            var img = image.ToArray2D<RgbPixel>();
+            var img = eventArgs.Frame.ToArray2D<RgbPixel>();
 
             // detect face every 4 frames
             if (frameIndex % 4 == 0)
@@ -192,7 +192,7 @@ namespace Bootcamp.CompVis.Pose
 
             // detect head pose
             if (shape.Parts == 68)
-                DetectHeadPose(image, shape);
+                DetectHeadPose(eventArgs.Frame, shape);
 
             // update frame counter
             frameIndex++;

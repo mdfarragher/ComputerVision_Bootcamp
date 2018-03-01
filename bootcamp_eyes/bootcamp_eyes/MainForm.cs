@@ -8,6 +8,7 @@ using DlibDotNet.Extensions;
 using Dlib = DlibDotNet.Dlib;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
+using Accord.Imaging.Filters;
 
 namespace Bootcamp.CompVis.Eyes
 {
@@ -141,8 +142,12 @@ namespace Bootcamp.CompVis.Eyes
                 var value = (int) (100 * area / normalizedArea - 20);
                 eyeStateValue = value >= 0 && value <= 100 ? value : 0;
 
+                // calculate bounding box around eyes
+                var rect = Cv2.BoundingRect(Enumerable.Union(leftEye, rightEye));
+                rect.Inflate(30, 30);
+
                 // copy the eye image to the picturebox
-                var maskImg = BitmapConverter.ToBitmap(mask);
+                var maskImg = BitmapConverter.ToBitmap(mask.Clone(rect));
                 eyeBox.Image = maskImg;
             }
         }
@@ -154,8 +159,12 @@ namespace Bootcamp.CompVis.Eyes
         /// <param name="image"></param>
         private void videoPlayer_NewFrame(object sender, ref System.Drawing.Bitmap image)
         {
+            // conver frame to grayscale
+            var grayscale = new GrayscaleBT709();
+            var grayImage = grayscale.Apply(image);
+
             // convert image to dlib format
-            var img = image.ToArray2D<RgbPixel>();
+            var img = grayImage.ToArray2D<RgbPixel>();
 
             // detect face every 4 frames
             if (frameIndex % 4 == 0)
@@ -177,9 +186,6 @@ namespace Bootcamp.CompVis.Eyes
 
             // update frame counter
             frameIndex++;
-
-            // return modified image
-            image = img.ToBitmap<RgbPixel>();
         }
 
         /// <summary>

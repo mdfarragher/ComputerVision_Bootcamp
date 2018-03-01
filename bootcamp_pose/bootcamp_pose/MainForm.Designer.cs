@@ -91,7 +91,7 @@
             this.videoPlayer.TabIndex = 12;
             this.videoPlayer.Text = "videoSourcePlayer1";
             this.videoPlayer.VideoSource = null;
-            this.videoPlayer.NewFrame += new Accord.Controls.VideoSourcePlayer.NewFrameHandler(this.videoPlayer_NewFrame);
+            this.videoPlayer.NewFrameReceived += new Accord.Video.NewFrameEventHandler(this.videoPlayer_NewFrameReceived);
             // 
             // upDownAngle
             // 

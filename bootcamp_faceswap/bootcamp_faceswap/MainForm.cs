@@ -1,17 +1,10 @@
-﻿using Accord.Video.DirectShow;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Linq;
 using System.Windows.Forms;
-using Accord.Vision.Detection;
-using System.Drawing.Imaging;
-using Accord.Imaging.Filters;
 using DlibDotNet;
 using DlibDotNet.Extensions;
-using Dlib = DlibDotNet.Dlib;
-using System.Collections.Generic;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
@@ -61,7 +54,7 @@ namespace Bootcamp.CompVis.FaceSwap
 
                 // find bradley's faces in image
                 var faces = fd.Detect(img);
-                var bradley = faces[1];
+                var bradley = faces[0];
 
                 // get bradley's landmark points
                 var bradleyShape = sp.Detect(img, bradley);
